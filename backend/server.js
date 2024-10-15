@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-require('dotenv').config()
+require('dotenv').config({ path: '../.env' })
 
 const recipesRouter = require('./routes/recipes')
 
@@ -13,10 +13,7 @@ app.use(express.json())
 
 app.use('/api/recipes', recipesRouter)
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
     console.log('Connected to MongoDB')
     app.listen(PORT, () => {
