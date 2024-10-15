@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const path = require('path')
 require('dotenv').config({ path: '../.env' })
 
 const recipesRouter = require('./routes/recipes')
@@ -24,5 +25,11 @@ mongoose.connect(process.env.MONGODB_URI)
     console.error('Failed to connect to MongoDB: ', err)
 })
 
+// Serve static files from the frontend directory
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
+// Fallback to index.html for SPA routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+});
 
