@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return
     }
   
-    fetch(`http://localhost:8000/api/recipes/${recipeId}`)
+    fetch(`https://recipeviewer.fly.dev/api/recipes/${recipeId}`)
       .then(response => response.json())
       .then(recipe => {
         document.getElementById('recipe-title').textContent = recipe.title

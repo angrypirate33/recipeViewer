@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const recipeList = document.getElementById('recipe-list')
 
-    fetch('http://localhost:8000/api/recipes')
+    fetch('https://recipeviewer.fly.dev/api/recipes')
         .then(response => response.json())
         .then(recipes => {
             recipes.forEach(recipe => {
