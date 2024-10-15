@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const recipeList = document.getElementById('recipe-list')
 
-    fetch('https://find-port-number/api/recipes')
-        .then(resposne => response.json())
+    fetch('http://localhost:8000/api/recipes')
+        .then(response => response.json())
         .then(recipes => {
-            recipes.array.forEach(recipe => {
+            recipes.forEach(recipe => {
               const listItem = document.createElement('li')  
               const link = document.createElement('a')
               link.href = `recipe.html?id=${recipe._id}`
